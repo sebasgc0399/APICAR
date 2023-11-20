@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "marca": "Toyota",
+        "modelo": "Corolla",
+        "a\u00f1o": 2020,
+        "precio": 20000,
+        "kilometraje": 50000,
+        "color": "Blanco"
+    },
+    {
+        "id": 2,
+        "marca": "Ford",
+        "modelo": "Mustang",
+        "a\u00f1o": 2019,
+        "precio": 35000,
+        "kilometraje": 30000,
+        "color": "Rojo"
+    },
+    {
+        "id": 3,
+        "marca": "Chevrolet",
+        "modelo": "Camaro",
+        "a\u00f1o": 2018,
+        "precio": 30000,
+        "kilometraje": 40000,
+        "color": "Amarillo"
+    },
+    {
+        "id": 4,
+        "marca": "Honda",
+        "modelo": "Civic",
+        "a\u00f1o": 2021,
+        "precio": 22000,
+        "kilometraje": 10000,
+        "color": "Negro"
+    },
+    {
+        "id": 5,
+        "marca": "BMW",
+        "modelo": "Serie 3",
+        "a\u00f1o": 2020,
+        "precio": 45000,
+        "kilometraje": 15000,
+        "color": "Azul"
+    },
+    {
+        "id": 6,
+        "marca": "Audi",
+        "modelo": "A4",
+        "a\u00f1o": 2022,
+        "precio": 40000,
+        "kilometraje": 5000,
+        "color": "Gris"
+    },
+    {
+        "id": 7,
+        "marca": "Mercedes-Benz",
+        "modelo": "Clase C",
+        "a\u00f1o": 2019,
+        "precio": 42000,
+        "kilometraje": 20000,
+        "color": "Plateado"
+    },
+    {
+        "id": 8,
+        "marca": "Nissan",
+        "modelo": "Altima",
+        "a\u00f1o": 2018,
+        "precio": 18000,
+        "kilometraje": 60000,
+        "color": "Verde"
+    },
+    {
+        "id": 9,
+        "marca": "Volkswagen",
+        "modelo": "Golf",
+        "a\u00f1o": 2021,
+        "precio": 28000,
+        "kilometraje": 12000,
+        "color": "Naranja"
+    },
+    {
+        "id": 10,
+        "marca": "Tesla",
+        "modelo": "Model 3",
+        "a\u00f1o": 2022,
+        "precio": 50000,
+        "kilometraje": 8000,
+        "color": "Negro"
+    }
+]
