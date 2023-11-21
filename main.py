@@ -5,9 +5,6 @@ import os
 
 app = FastAPI()
 
-# Ruta de la carpeta de imágenes
-IMAGENES_DIR = "imagenes"
-
 # Cargar los datos de los vehículos desde el archivo
 def cargar_vehiculos():
     try:
@@ -20,7 +17,7 @@ vehiculos = cargar_vehiculos()
 
 # Función para obtener la URL de la imagen del vehículo
 def obtener_url_imagen(id_vehiculo):
-    ruta_imagen = os.path.join(IMAGENES_DIR, f"{id_vehiculo}.jpg")
+    ruta_imagen = os.path.join('./imagenes', f"{id_vehiculo}.png")
     return ruta_imagen if os.path.exists(ruta_imagen) else None
 
 @app.get("/vehiculos")
