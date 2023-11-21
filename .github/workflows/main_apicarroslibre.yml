@@ -4,8 +4,6 @@
 
 name: Build and deploy Python app to Azure Web App - APICARROSLIBRE
 
-name: Build and deploy Python app to Azure Web App - APICARROSLIBRE
-
 on:
   push:
     branches:
