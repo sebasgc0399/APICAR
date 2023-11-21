@@ -4,6 +4,8 @@
 
 name: Build and deploy Python app to Azure Web App - APICARROSLIBRE
 
+name: Build and deploy Python app to Azure Web App - APICARROSLIBRE
+
 on:
   push:
     branches:
@@ -11,37 +13,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Set up Python version
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: '3.12'
 
-      - name: Create and start virtual environment
+      - name: Install dependencies
         run: |
           python -m venv venv
-          source venv/bin/activate
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-        
+          . venv/bin/activate
+          pip install -r requirements.txt
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v3
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
         with:
-          name: python-app
-          path: |
-            release.zip
-            !venv/
+          app-name: 'APICARROSLIBRE'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C40C99318E6D4FC1B7EE5AE3B28E7F15 }}
+          package: '.'
 
   deploy:
     runs-on: ubuntu-latest
