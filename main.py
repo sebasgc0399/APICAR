@@ -1,23 +1,35 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+import os
 import json
 
 app = FastAPI()
 
+# Configuración para servir archivos estáticos desde la carpeta 'imagenes'
+app.mount("/imagenes", StaticFiles(directory="imagenes"), name="imagenes")
+
+
 # Cargar los datos de los vehículos desde el archivo
 def cargar_vehiculos():
     try:
-        with open("./vehiculos/vehiculos.json", "r") as file:
+        with open(os.path.join("vehiculos", "vehiculos.json"), "r") as file:  # Asegúrate de usar os.path.join
             return json.load(file)
     except FileNotFoundError:
-        return []
+        raise HTTPException(status_code=404, detail="Archivo de vehículos no encontrado")
 
 vehiculos = cargar_vehiculos()
 
 # Función para obtener la URL de la imagen del vehículo
 def obtener_url_imagen(id_vehiculo):
-    ruta_imagen = './imagenes/' + str(id_vehiculo) + '.png'
-    return ruta_imagen if ruta_imagen else None
+    nombre_imagen = f"{id_vehiculo}.png"
+    ruta_imagen = os.path.join('imagenes', nombre_imagen)  # Usa os.path.join para la portabilidad de rutas
+    # Comprueba si el archivo de imagen existe
+    if os.path.isfile(ruta_imagen):
+        return ruta_imagen
+    else:
+        return None
 
 
 @app.get("/vehiculos")
