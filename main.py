@@ -1,19 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 import json
 import os
 
 app = FastAPI()
-print("Directorio de trabajo actual:", os.getcwd())
-base_dir = os.path.dirname(os.path.abspath(__file__))
-images_dir = os.path.join(base_dir, 'imagenes')
-app.mount("/imagenes", StaticFiles(directory=images_dir), name="imagenes")
 
 # Cargar los datos de los vehículos desde el archivo
 def cargar_vehiculos():
     try:
-        with open(os.path.join("vehiculos", "vehiculos.json"), "r") as file:
+        with open("/home/site/wwwroot/vehiculos/vehiculos.json", "r") as file:
             return json.load(file)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="Archivo de vehículos no encontrado")
@@ -21,7 +16,7 @@ def cargar_vehiculos():
 vehiculos = cargar_vehiculos()
 
 def obtener_ruta_imagen(id_vehiculo):
-    return os.path.join('imagenes', f"{id_vehiculo}.png")
+    return f"/home/site/wwwroot/imagenes/{id_vehiculo}.png"
 
 def obtener_url_imagen_d(id_vehiculo):
     return f"https://apicarroslibre.azurewebsites.net/imagenes/{id_vehiculo}.png"
