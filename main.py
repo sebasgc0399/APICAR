@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 import json
-import os
 
 app = FastAPI()
 
@@ -17,8 +16,9 @@ vehiculos = cargar_vehiculos()
 
 # Función para obtener la URL de la imagen del vehículo
 def obtener_url_imagen(id_vehiculo):
-    ruta_imagen = os.path.join('./imagenes', f"{id_vehiculo}.png")
-    return ruta_imagen if os.path.exists(ruta_imagen) else None
+    ruta_imagen = './imagenes/' + str(id_vehiculo) + '.png'
+    return ruta_imagen if ruta_imagen else None
+
 
 @app.get("/vehiculos")
 async def leer_vehiculos():
