@@ -6,8 +6,9 @@ import os
 
 app = FastAPI()
 
-# Configuración para servir archivos estáticos desde la carpeta 'imagenes'
-app.mount("/imagenes", StaticFiles(directory="imagenes"), name="imagenes")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+images_dir = os.path.join(base_dir, 'imagenes')
+app.mount("/imagenes", StaticFiles(directory=images_dir), name="imagenes")
 
 # Cargar los datos de los vehículos desde el archivo
 def cargar_vehiculos():
