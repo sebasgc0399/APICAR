@@ -5,7 +5,7 @@ import json
 import os
 
 app = FastAPI()
-
+print("Directorio de trabajo actual:", os.getcwd())
 base_dir = os.path.dirname(os.path.abspath(__file__))
 images_dir = os.path.join(base_dir, 'imagenes')
 app.mount("/imagenes", StaticFiles(directory=images_dir), name="imagenes")
